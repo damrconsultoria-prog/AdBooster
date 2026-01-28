@@ -9,7 +9,7 @@
 <body>
 
 <header>
-  <img src="./adbooster/logo-adbooster.png" alt="AdBooster Logo" class="logo">
+ <img src="./adbooster/logo-adbooster.png" alt="Logo AdBooster" class="logo" width="200" height="60" loading="lazy">
   <nav>
     <a href="#servicos">Serviços</a>
     <a href="#resultados">Resultados</a>
