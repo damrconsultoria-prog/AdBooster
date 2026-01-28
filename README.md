@@ -1,74 +1,79 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AdBooster | Tráfego Pago que Gera Resultados</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+// ===== SCROLL SUAVE PARA CONTATO =====
+function scrollToContato() {
+  const contato = document.getElementById("contato");
+  if (contato) {
+    contato.scrollIntoView({ behavior: "smooth" });
+  }
+}
 
-<header>
- <img src="./adbooster/logo-adbooster.png" alt="Logo AdBooster" class="logo" width="200" height="60" loading="lazy">
-  <nav>
-    <a href="#servicos">Serviços</a>
-    <a href="#resultados">Resultados</a>
-    <a href="#contato">Contato</a>
-  </nav>
-</header>
-<picture>
-  <source type="image/avif" srcset="assets/images/hero-800.avif 800w, assets/images/hero-1600.avif 1600w" sizes="(max-width:600px) 100vw, 50vw">
-  <source type="image/webp" srcset="assets/images/hero-800.webp 800w, assets/images/hero-1600.webp 1600w" sizes="(max-width:600px) 100vw, 50vw">
-  <img src="assets/images/hero-800.jpg"
-       srcset="assets/images/hero-800.jpg 800w, assets/images/hero-1600.jpg 1600w"
-       sizes="(max-width:600px) 100vw, 50vw"
-       alt="Equipe trabalhando em campanhas digitais"
-       loading="lazy"
-       style="width:100%;height:auto;">
-</picture>
-<section class="hero">
-  <h1>Impulsione suas vendas com tráfego inteligente</h1>
-  <p>Especialistas em anúncios que convertem no Google, Instagram e Facebook.</p>
-  <button onclick="scrollToContato()">Quero crescer agora</button>
-</section>
+// ===== SIMULADOR DE RESULTADOS =====
+function simular() {
+  const investimentoInput = document.getElementById("investimento");
+  const resultadoTexto = document.getElementById("resultado");
 
-<section id="servicos" class="cards">
-  <h2>Nossos Serviços</h2>
-  <div class="grid">
-    <div class="card">🚀 Gestão de Tráfego Pago</div>
-    <div class="card">📊 Otimização de Conversão</div>
-    <div class="card">🎯 Funis de Vendas</div>
-    <div class="card">📈 Escala de Campanhas</div>
-  </div>
-</section>
+  if (!investimentoInput || !resultadoTexto) return;
 
-<section id="resultados" class="simulador">
-  <h2>Simule seu crescimento</h2>
-  <input type="number" id="investimento" placeholder="Investimento mensal (R$)">
-  <button onclick="simular()">Simular</button>
-  <p id="resultado"></p>
-</section>
+  const valor = parseFloat(investimentoInput.value);
 
-<section class="depoimentos">
-  <h2>O que nossos clientes dizem</h2>
-  <blockquote>“A AdBooster dobrou nosso faturamento em 60 dias.”</blockquote>
-  <blockquote>“ROI absurdo. Atendimento premium.”</blockquote>
-</section>
+  if (isNaN(valor) || valor <= 0) {
+    resultadoTexto.innerText = "Digite um valor válido para simular.";
+    return;
+  }
 
-<section id="contato" class="contato">
-  <h2>Fale com a AdBooster</h2>
-  <form>
-    <input type="text" placeholder="Seu nome" required>
-    <input type="email" placeholder="Seu e-mail" required>
-    <textarea placeholder="Conte sobre seu negócio"></textarea>
-    <button type="submit">Enviar</button>
-  </form>
-</section>
+  // Projeção fictícia de retorno
+  const retorno = valor * 5;
 
-<footer>
-  <p>© 2026 AdBooster. Todos os direitos reservados.</p>
-</footer>
+  resultadoTexto.innerText =
+    "Com esse investimento, seu faturamento potencial pode chegar a R$ " +
+    retorno.toLocaleString("pt-BR");
+}
 
-<script src="script.js"></script>
-</body>
-</html>
+// ===== MENU MOBILE =====
+function toggleMenu() {
+  const menu = document.getElementById("menu");
+  if (!menu) return;
+
+  if (menu.style.display === "flex") {
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "flex";
+    menu.style.flexDirection = "column";
+  }
+}
+
+// Fecha o menu ao clicar em um link (mobile)
+document.querySelectorAll("#menu a").forEach(link => {
+  link.addEventListener("click", () => {
+    if (window.innerWidth <= 768) {
+      document.getElementById("menu").style.display = "none";
+    }
+  });
+});
+
+// ===== ANIMAÇÃO AO ROLAR A PÁGINA =====
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll("section").forEach(sec => {
+  sec.classList.add("reveal");
+  observer.observe(sec);
+});
+
+// ===== EFEITO HEADER AO ROLAR =====
+window.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+  if (!header) return;
+
+  if (window.scrollY > 50) {
+    header.style.background = "rgba(10,15,44,0.85)";
+    header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.3)";
+  } else {
+    header.style.background = "rgba(255,255,255,0.05)";
+    header.style.boxShadow = "none";
+  }
+});
