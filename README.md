@@ -16,7 +16,16 @@
     <a href="#contato">Contato</a>
   </nav>
 </header>
-
+<picture>
+  <source type="image/avif" srcset="assets/images/hero-800.avif 800w, assets/images/hero-1600.avif 1600w" sizes="(max-width:600px) 100vw, 50vw">
+  <source type="image/webp" srcset="assets/images/hero-800.webp 800w, assets/images/hero-1600.webp 1600w" sizes="(max-width:600px) 100vw, 50vw">
+  <img src="assets/images/hero-800.jpg"
+       srcset="assets/images/hero-800.jpg 800w, assets/images/hero-1600.jpg 1600w"
+       sizes="(max-width:600px) 100vw, 50vw"
+       alt="Equipe trabalhando em campanhas digitais"
+       loading="lazy"
+       style="width:100%;height:auto;">
+</picture>
 <section class="hero">
   <h1>Impulsione suas vendas com tráfego inteligente</h1>
   <p>Especialistas em anúncios que convertem no Google, Instagram e Facebook.</p>
