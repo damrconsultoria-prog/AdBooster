@@ -9,7 +9,8 @@
 <body>
 
 <header>
-  <img src="assets/logo-adbooster.png" alt="AdBooster Logo" class="logo">
+  <img src="assets/logo![logo-adbooster png](https://github.com/user-attachments/assets/6ba55eec-8243-4eca-9bea-34eb8da03862)
+-adbooster.png" alt="AdBooster Logo" class="logo">
   <nav>
     <a href="#servicos">Serviços</a>
     <a href="#resultados">Resultados</a>
